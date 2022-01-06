@@ -6,18 +6,20 @@ import sys
 # for ignoring connection warning
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-vm_name = "Idan_For_Testing_2"
-email_to_notify = "idanso@radware.com"
+vm_name = "vm_name"
+email_to_notify = "test@email.com"
 
 status_message = "Script ended with unexpected failure"
 
 if len(sys.argv) > 1:
     vm_name = sys.argv[1]
     email_to_notify = sys.argv[2]
+    user_name = sys.argv[3]
+    password = sys.argv[4]
 
 try:
     print("Connecting to Altaro...")
-    token = start_session("Administrator", "radware10?", "ALTARO", 35107, "localhost")
+    token = start_session(user_name, password, "ALTARO", 35107, "localhost")
     if token:
         print("Session Started")
 
